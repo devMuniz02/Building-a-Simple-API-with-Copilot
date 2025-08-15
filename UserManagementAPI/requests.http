@@ -1,0 +1,71 @@
+### 🧾 Get all users (requires valid token)
+GET http://localhost:5282/api/users
+Authorization: Bearer your-valid-token
+
+###
+
+### 🔍 Get user by ID
+GET http://localhost:5282/api/users/1
+Authorization: Bearer your-valid-token
+
+###
+
+### 🔍 Get user with non-existent ID (to trigger 404 or exception)
+GET http://localhost:5282/api/users/999
+Authorization: Bearer your-valid-token
+
+###
+
+### ➕ Create user
+POST http://localhost:5282/api/users
+Authorization: Bearer your-valid-token
+Content-Type: application/json
+
+{
+  "fullName": "Emmanuel Delgado",
+  "email": "emmanuel@techhive.com",
+  "department": "Engineering"
+}
+
+###
+
+### ❌ Create user with invalid body (to trigger validation error)
+POST http://localhost:5282/api/users
+Authorization: Bearer your-valid-token
+Content-Type: application/json
+
+{
+  "fullName": "",
+  "email": "",
+  "department": ""
+}
+
+###
+
+### ✏️ Update existing user
+PUT http://localhost:5282/api/users/1
+Authorization: Bearer your-valid-token
+Content-Type: application/json
+
+{
+  "fullName": "Emmanuel D.",
+  "email": "emmanuel.d@techhive.com",
+  "department": "Product"
+}
+
+###
+
+### 🗑️ Delete user
+DELETE http://localhost:5282/api/users/1
+Authorization: Bearer your-valid-token
+
+###
+
+### 🔐 Missing token (should return 401 Unauthorized)
+GET http://localhost:5282/api/users
+
+###
+
+### 🔐 Invalid token
+GET http://localhost:5282/api/users
+Authorization: Bearer invalid-token
